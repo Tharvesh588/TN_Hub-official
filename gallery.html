@@ -32,6 +32,19 @@
       font-weight: bold;
     }
 
+    .search-bar {
+      flex: 1;
+      margin-left: 16px;
+    }
+
+    .search-bar input {
+      width: 40%;
+      padding: 10px;
+      border: 1.5px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -56,14 +69,9 @@
       height: auto;
     }
 
-    .gallery-item h3 {
-      font-size: 24px;
+    .gallery-item p {
       padding: 16px;
       margin: 0;
-    }
-
-    .gallery-item p {
-      padding: 0 16px 16px;
       color: #666;
     }
 
@@ -94,6 +102,9 @@
   <!-- Navbar -->
   <div class="navbar">
     <a href="#home" class="logo">TN'S HUB</a>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search Project" onkeyup="filterGallery()">
+    </div>
     <div class="nav-links">
       <a href="/">Back</a>
     </div>
@@ -101,19 +112,19 @@
 
   <!-- Gallery Section -->
   <div class="gallery" id="gallery">
-    <div class="gallery-item" onclick="window.open('https://codepen.io/TharveshMuhaideen_NexusPoint/full/mdNbwyY')">
+    <div class="gallery-item" data-title="Mobile Shopping Kart"
+      onclick="window.open('https://codepen.io/TharveshMuhaideen_NexusPoint/full/mdNbwyY')">
       <img
         src="https://images.unsplash.com/photo-1590459963567-1bf6b8595be1?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Gallery Item 1">
       <p>Mobile Shopping Kart</p>
     </div>
-    <!--___________________________________________________________-->
-    <div class="gallery-item" onclick="window.open('https://codepen.io/TharveshMuhaideen_NexusPoint/full/KKjLXxX')">
+    <!--___________________________________________________________________-->
+    <div class="gallery-item" data-title="Yellow-Black Portfolio"
+      onclick="window.open('https://codepen.io/TharveshMuhaideen_NexusPoint/full/KKjLXxX')">
       <img src="https://i.ibb.co/fpx1bqt/portfolio.png" alt="Gallery Item 2">
       <p>Yellow-Black Portfolio</p>
     </div>
-    <!--___________________________________________________________-->
-
     <!-- Add more items as needed -->
   </div>
 
@@ -126,6 +137,23 @@
     </div>
     <p>&copy; 2024 TN's Hub - Empowering Student Developers</p>
   </footer>
+
+  <!-- JavaScript for Search Functionality -->
+  <script>
+    function filterGallery() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      galleryItems.forEach(item => {
+        const title = item.getAttribute('data-title').toLowerCase();
+        if (title.includes(searchInput)) {
+          item.style.display = ''; // Show item
+        } else {
+          item.style.display = 'none'; // Hide item
+        }
+      });
+    }
+  </script>
 
 </body>
 
