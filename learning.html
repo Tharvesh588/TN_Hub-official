@@ -1,49 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TN's Hub - Empowering Student Developers</title>
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <!--icon-->
-    <link rel="shortcut icon" href="logo.png" type="image/png">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <!--icon-->
+        <link rel="shortcut icon" href="logo.png" type="image/png">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css"><style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .course {
+            width: 300px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .course img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .course h3 {
+            text-align: center;
+            padding: 10px;
+            background-color: #2e8b57;
+            color: white;
+            margin: 0;
+        }
+        .course:hover {
+            transform: scale(1.05);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .popup h3 {
+            margin-top: 0;
+        }
+        .popup table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .popup table, .popup th, .popup td {
+            border: 1px solid #ddd;
+        }
+        .popup th, .popup td {
+            padding: 10px;
+            text-align: left;
+        }
+        .close-btn, .start-btn {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .close-btn {
+            background-color: #d9534f;
+        }
+    </style>
 </head>
-
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <a href="#home" class="logo">TN'S HUB</a>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search Project" onkeyup="filterGallery()">
+<div class="container">
+    <h1>Welcome to TM Nexus Hub - Online Learning</h1>
+    <div class="gallery">
+        <!-- HTML Course Card -->
+        <div class="course" onclick="openPopup('HTML')">
+            <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML Course">
+            <h3>HTML</h3>
         </div>
-        <div class="nav-links">
-            <a href="/">Back</a>
+
+        <!-- CSS Course Card -->
+        <div class="course" onclick="openPopup('CSS')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS Course">
+            <h3>CSS</h3>
+        </div>
+
+        <!-- Bootstrap Course Card -->
+        <div class="course" onclick="openPopup('Bootstrap')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap Course">
+            <h3>Bootstrap</h3>
+        </div>
+
+        <!-- Python Course Card -->
+        <div class="course" onclick="openPopup('Python')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Course">
+            <h3>Python</h3>
+        </div>
+
+        <!-- Embedded with Arduino Course Card -->
+        <div class="course" onclick="openPopup('Embedded Arduino')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" alt="Embedded with Arduino Course">
+            <h3>Embedded with Arduino</h3>
+        </div>
+
+        <!-- AI with Python Course Card -->
+        <div class="course" onclick="openPopup('AI Python')">
+            <img src="https://miro.medium.com/max/1200/1*ZpVdbzDkN97qOIVl8uU4Zg.jpeg" alt="AI with Python Course">
+            <h3>AI with Python</h3>
+        </div>
+
+        <!-- ML with Python Course Card -->
+        <div class="course" onclick="openPopup('ML Python')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Machine_learning_model.png" alt="ML with Python Course">
+            <h3>ML with Python</h3>
+        </div>
+
+        <!-- Front-End Development Course Card -->
+        <div class="course" onclick="openPopup('Frontend Dev')">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/web-development-3628968-3030197.png" alt="Front-end Development Course">
+            <h3>Front-End Development</h3>
+        </div>
+
+        <!-- Flask App Development Course Card -->
+        <div class="course" onclick="openPopup('Flask Dev')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg" alt="Flask App Development Course">
+            <h3>Flask App Development</h3>
         </div>
     </div>
+</div>
 
-    <div class="contact" id="contact">
-        <h3>Register here</h3>
-        <p>Learning are under Developing</p>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea rows="2" placeholder="Course Recommendation"></textarea>
-            <button type="submit" >Notify Me</button>
-        </form>
+<!-- Pop-up Modal -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h3 id="course-title"></h3>
+        <table id="course-content">
+            <!-- Course content will be populated here -->
+        </table>
+        <button class="start-btn">Start Learning</button>
+        <button class="close-btn" onclick="closePopup()">Close</button>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <h3>Stay Connected</h3>
-        <a href="https://www.linkedin.com/in/tharvesh2005" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a href="https://www.github.com/Tharvesh588" target="_blank"><i class="fa fa-github"></i></a>
-        <a href="https://www.youtube.com/@TharveshNexus_1042" target="_blank"><i class="fa fa-youtube"></i></a>
+<!-- Footer -->
+<footer>
+    <h3>Stay Connected</h3>
+    <a href="https://www.linkedin.com/in/tharvesh2005" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <a href="https://www.github.com/Tharvesh588" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="https://www.youtube.com/@TharveshNexus_1042" target="_blank"><i class="fa fa-youtube"></i></a>
 
-        <p>&copy; TN's Hub.Since 2k24</p>
-    </footer>
+    <p>&copy; TN's Hub.Since 2k24</p>
+</footer>
+
+<script>
+    const courseContent = {
+        'HTML': [
+            ['Module 1', 'Introduction to HTML'],
+            ['Module 2', 'HTML Tags and Attributes'],
+            ['Module 3', 'HTML Editors'],
+            ['Module 4', 'Creating First HTML'],
+            ['Module 5', 'Lorem Ipsum - Context'],
+            ['Module 6', 'Creating Forms and Tables'],
+            ['Module 7', 'Inspecting HTML for Perticular Webpages'],
+            ['Module 8', 'Complete HTML Project']
+        ],
+        'CSS': [
+            ['Module 1', 'Introduction to CSS'],
+            ['Module 2', 'Selectors and Syntax'],
+            ['Module 3', 'CSS Linking Method'],
+            ['Module 4', 'Creating style.css'],
+            ['Module 5', 'What Can CSS Do?'],
+            ['Module 7', 'Complete CSS Project']
+        ],
+        'Bootstrap': [
+            ['Module 1', 'Introduction to Bootstrap'],
+            ['Module 2', 'Using Grid System'],
+            ['Module 3', 'Responsive Design with Bootstrap'],
+            ['Module 4', 'Complete Bootstrap Project']
+        ],
+        'Python': [
+            ['Module 1', 'Python Basics'],
+            ['Module 2', 'Quick Commands'],
+            ['Module 3', 'More Stuff with File Handling'],
+            ['Module 4', 'Python Functions'],
+            ['Module 5', 'Python Classes'],
+            ['Module 6', 'Python Modules'],
+            ['Module 7', 'Top 10 Python Projects']
+        ],
+        'AI Python': [
+            ['Module 1', 'Introduction to AI'],
+            ['Module 2', 'Python for AI'],
+            ['Module 3', 'Building AI Models']
+        ],
+        'ML Python': [
+            ['Module 1', 'Introduction to Machine Learning'],
+            ['Module 2', 'Supervised and Unsupervised Learning'],
+            ['Module 3', 'Building ML Models in Python']
+        ],
+        'Frontend Dev': [
+            ['Module 1', 'Introduction to Front-End Development'],
+            ['Module 2', 'JavaScript and DOM Manipulation'],
+            ['Module 3', 'Building a Web Application']
+        ],
+        'Flask Dev': [
+            ['Module 1', 'Introduction to Flask'],
+            ['Module 2', 'Routing and Templates'],
+            ['Module 3', 'Building a Flask App']
+        ]
+    };
+
+    function openPopup(course) {
+        document.getElementById('course-title').innerText = course + " Course - Table of Contents";
+        
+        const contentTable = document.getElementById('course-content');
+        contentTable.innerHTML = '';  // Clear previous content
+        
+        courseContent[course].forEach((module) => {
+            const row = contentTable.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            cell1.textContent = module[0];
+            cell2.textContent = module[1];
+        });
+        
+        document.getElementById('popup').style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = "none";
+    }
+</script>
+
+</body>
+</html>
+
+    
