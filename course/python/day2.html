@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Day 2: Quick Commands</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #444;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+      overflow: auto;
+    }
+
+    a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+    }
+
+    a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+    }
+
+    .next {
+      background-color: #04AA6D;
+      color: white;
+      float:right;
+    }
+
+    .round {
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Python Day 2: Quick Commands</h1>
+
+  <h2>1. Print a Message:</h2>
+  <pre><code>print("Hello, World!")</code></pre>
+
+  <h2>2. Basic Arithmetic:</h2>
+  <pre><code>5 + 3
+# Perform addition (+), subtraction (-), multiplication (*), and division (/) directly in the shell.</code></pre>
+
+  <h2>3. Define a Variable:</h2>
+  <pre><code>x = 10
+print(x)</code></pre>
+
+  <h2>4. Create a List:</h2>
+  <pre><code>my_list = [1, 2, 3, 4, 5]
+print(my_list)</code></pre>
+
+  <h2>5. Loop Through a List:</h2>
+  <pre><code>for item in my_list:
+    print(item)</code></pre>
+
+  <h2>6. Define a Function:</h2>
+  <pre><code>def greet(name):
+    return f"Hello, {name}!"
+print(greet("Alice"))</code></pre>
+
+  <h2>7. Import a Module:</h2>
+  <pre><code>import math
+print(math.sqrt(16))</code></pre>
+
+  <h2>8. String Formatting:</h2>
+  <pre><code># Formatting strings for cleaner output.
+name = "Alice"
+age = 25
+print(f"My name is {name} and I am {age} years old.")  # Using f-strings</code></pre>
+
+  <h2>9. For Looping with a Range:</h2>
+  <pre><code>i = 0
+j = 5
+for i in range(j):
+    print(i)   # Prints numbers from 0 to 4</code></pre>
+
+  <h2>10. Conditional Statements:</h2>
+  <h3>10.1 If Statement:</h3>
+  <pre><code># The if statement is used to test a condition.
+age = int(input("Enter your age: "))
+if age >= 18:
+    print("You are an adult.")</code></pre>
+
+  <h3>10.2 If-Else Statement:</h3>
+  <pre><code># The if-else statement allows you to execute one block of code if the condition is true and another if it's false.
+age = int(input("Enter your age: "))
+if age >= 18:
+    print("You are an adult.")
+else:
+    print("You are a minor.")</code></pre>
+
+  <h3>10.3 Elif Statement:</h3>
+  <pre><code># The elif statement (short for "else if") is used to check multiple conditions.
+score = int(input("Enter your score: "))
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+else:
+    print("Grade: D")</code></pre>
+
+  <h2>11. While Loop:</h2>
+  <pre><code># The while loop repeats as long as a specified condition is true.
+count = 0
+while count <= 5:
+    print(count)
+    count += 1  # This is equivalent to count = count + 1</code></pre>
+
+  <h2>12. Lists and Operations:</h2>
+  <pre><code># Lists can store multiple items in a single variable
+my_list = [1, 2, 3, 4, 5]
+# Append an item to the list
+my_list.append(6)
+print(my_list)
+# Remove an item from the list
+my_list.remove(3)
+print(my_list)</code></pre>
+
+  <h2>13. Dictionaries:</h2>
+  <pre><code># Dictionaries store data values in key-value pairs.
+my_dict = {
+    "name": "Alice",
+    "age": 25,
+    "city": "Wonderland"
+}
+print(my_dict)
+# Accessing values
+print(my_dict["name"])</code></pre>
+
+  <h2>14. User Input:</h2>
+  <pre><code># To get input from the user, you can use the input() function.
+name = input("Enter your name: ")
+print(f"Hello, {name}!")</code></pre>
+
+  <h2>15. Exception Handling:</h2>
+  <pre><code># Handling errors and exceptions to make code more robust.
+try:
+    # Code that may cause an exception
+    num = int(input("Enter a number: "))
+    print(num)
+except ValueError:
+    # Code to handle the exception
+    print("That's not a valid number!")</code></pre>
+
+  <a href="day1.html" class="previous">&laquo; Previous</a>
+  <a href="#" class="next">Next &raquo;</a>
+
+</body>
+
+</html>

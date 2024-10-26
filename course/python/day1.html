@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 1: Introduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow: auto;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .previous {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .next {
+            background-color: #04AA6D;
+            color: white;
+            float: right;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Python Day 1: Introduction</h1>
+
+    <h2>1. Install Python</h2>
+    <pre><code>To install Python, follow these steps:
+
+- Download Python:
+  - Go to the official Python website: <a href="https://www.python.org/downloads/" style="padding:0px;">python.org</a>
+  - Click on the latest version available for Windows.
+
+- Run the Installer:
+  - Double-click the downloaded installer (.exe).
+  - Check the box that says "Add Python to PATH" before clicking "Install Now."
+
+- Complete Installation:
+  - Follow the prompts to finish the installation.</code></pre>
+
+    <h2>2. Configure Python in Environmental Variables on Windows</h2>
+    <pre><code>After installing Python, you may need to set up environmental variables to ensure it's accessible from any command prompt. Here’s how to do it:
+
+- Open Environment Variables:
+  - Right-click on "This PC" or "My Computer" and select "Properties."
+  - Click on "Advanced system settings."
+  - In the System Properties window, click the "Environment Variables" button.
+
+- Edit the PATH Variable:
+  - In the Environment Variables window, look for the "Path" variable in the "System variables" section and select it. Click "Edit."
+  - Click "New" and add the path to your Python installation (e.g., C:\Python39 or C:\Users\<YourUsername>\AppData\Local\Programs\Python\Python39).
+  - Additionally, add the Scripts folder (e.g., C:\Users\<YourUsername>\AppData\Local\Programs\Python\Python39\Scripts).
+  - Click "OK" to save changes.</code></pre>
+
+    <h2>3. Access Python in Command Prompt (CMD)</h2>
+    <pre><code>You can access Python directly from the command line. Here’s how:
+
+- Open Command Prompt:
+  - Press Windows + R, type cmd, and hit Enter.
+
+- Check Python Installation:
+  - Type python --version and press Enter. You should see the installed Python version.
+  - You can also start the Python interactive shell by typing python and pressing Enter. This will take you to the Python prompt (>>>).</code></pre>
+
+    <h2>4. Install/Uninstall Libraries</h2>
+    <pre><code>Python uses packages to extend its functionality. You can manage these packages using pip, which is included with Python. Here's how to install and uninstall libraries:
+
+- Install a Library:
+  - In the command prompt, type the following command to install a library (for example, requests):
+    pip install requests
+
+- Uninstall a Library:
+  - To uninstall a library, use the following command:
+    pip uninstall requests
+
+- List Installed Libraries:
+  - You can see a list of all installed libraries by running:
+    pip list</code></pre>
+
+
+    <!--<a href="#" class="previous">&laquo; Previous</a>---->
+    <a href="day2.html" class="next">Next &raquo;</a>
+
+</body>
+
+</html>
