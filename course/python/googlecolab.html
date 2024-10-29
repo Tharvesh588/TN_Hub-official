@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Google Colab</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #1b1f38; /* Dark Blue background */
+        color: #e0e0e0; /* Light text for readability */
+    }
+
+    h1 {
+        color: #b03060; /* Maroon color for h1 */
+    }
+
+    h2 {
+        color: #1a73e8; /* Blue color for h2 */
+    }
+
+    p, ul {
+        color: #e0e0e0; /* Light text color */
+    }
+
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    a {
+        color: #1a73e8;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #b03060; /* Maroon color on hover */
+    }
+
+    pre {
+        background-color: #2e3556; /* Darker background for code blocks */
+        color: #e0e0e0;
+        padding: 10px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        overflow: auto;
+    }
+
+    code {
+        color: #ffdd57; /* Highlighted yellowish code color */
+    }</style>
+</head>
+
+<body>
+
+    <h1>Getting Started with Google Colab</h1>
+    <p>Google Colab is a free, cloud-based Jupyter notebook environment that allows you to write and execute Python code in your browser. Here’s how to start using Google Colab:</p>
+
+    <h2>Step 1: Open Google Colab</h2>
+    <p>To access Google Colab, go to <a href="https://colab.research.google.com/" target="_blank">https://colab.research.google.com/</a>. You will need to sign in with your Google account if you aren’t already signed in.</p>
+
+    <h2>Step 2: Create a New Notebook</h2>
+    <ul>
+        <li>On the Colab homepage, you can start a new notebook by selecting <strong>File &gt; New notebook</strong> from the top-left menu.</li>
+        <li>Alternatively, you can click on the <strong>New Notebook</strong> button directly on the Colab homepage.</li>
+    </ul>
+
+    <h2>Step 3: Set Up Your Notebook</h2>
+    <ul>
+        <li>A new notebook will open, typically named <code>Untitled0.ipynb</code>. You can rename it by clicking on the title and typing a new name.</li>
+        <li>The notebook has two primary cell types: <strong>Code</strong> for writing Python code and <strong>Text</strong> for adding Markdown text and descriptions.</li>
+    </ul>
+
+    <h2>Step 4: Write and Run Code</h2>
+    <ul>
+        <li>In a code cell, type your Python code. For example, you can start with a simple print statement:</li>
+        <pre><code>print("Hello, TM Nexus Community!")</code></pre>
+        <li>Press the <strong>Run</strong> button (play icon) to execute the code, or use <strong>Shift + Enter</strong> to run the current cell and move to the next.</li>
+    </ul>
+
+    <h2>Step 5: Explore Additional Features</h2>
+    <ul>
+        <li><strong>Connect to Google Drive:</strong> You can mount your Google Drive to save files and data by using the following command in a code cell:
+            <pre><code>from google.colab import drive
+drive.mount('/content/drive')</code></pre>
+        </li>
+        <li><strong>Install Libraries:</strong> Colab supports installing libraries using <code>!pip install library-name</code> syntax. For example:
+            <pre><code>!pip install numpy</code></pre>
+        </li>
+        <li><strong>Access GPU/TPU:</strong> To utilize a GPU or TPU, go to <strong>Runtime &gt; Change runtime type</strong> and select the hardware accelerator you need.</li>
+    </ul>
+
+    <h2>Step 6: Save and Share Your Notebook</h2>
+    <ul>
+        <li>Your notebook is automatically saved to Google Drive. You can also download it by selecting <strong>File &gt; Download .ipynb</strong> or <strong>Download .py</strong> for use outside of Colab.</li>
+        <li>To share your notebook, click the <strong>Share</strong> button in the upper-right corner and choose your sharing settings.</li>
+    </ul>
+
+    <p>Happy Coding with Google Colab!</p>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 5: Python Classes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow: auto;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .previous {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .next {
+            background-color: #04AA6D;
+            color: white;
+            float: right;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Python Day 5: Python Classes</h1>
+
+    <h2>1. Defining a Simple Class</h2>
+    <p>In Python, a class is a blueprint for creating objects (a particular data structure). It defines a set of attributes and methods that characterize any object of the class.</p>
+    <pre><code># Defining a basic class
+class Dog:
+    def __init__(self, name, age):  # The __init__ method initializes object attributes
+        self.name = name  # Attribute
+        self.age = age    # Attribute
+
+# Creating an object (instance) of the Dog class
+dog1 = Dog("Buddy", 5)
+
+# Accessing attributes
+print(dog1.name)  # Output: Buddy
+print(dog1.age)   # Output: 5</code></pre>
+
+    <h2>2. Adding Methods to a Class</h2>
+    <p>Methods are functions defined inside a class that describe the behaviors of an object. Here’s an example where we add a <code>bark</code> method to the <code>Dog</code> class:</p>
+    <pre><code># Adding methods to a class
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):  # Method
+        return "Woof!"
+
+# Creating an object and calling its method
+dog1 = Dog("Buddy", 5)
+print(dog1.bark())  # Output: Woof!</code></pre>
+
+    <h2>3. The <code>__init__</code> Method (Constructor)</h2>
+    <p>The <code>__init__</code> method is called a constructor. It is a special method that is automatically invoked when a new object of the class is created. It’s used to initialize the object’s attributes:</p>
+    <pre><code># The __init__ method (constructor) initializes object attributes
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# Creating a new Person object
+person1 = Person("Alice", 30)
+print(person1.name)  # Output: Alice
+print(person1.age)   # Output: 30</code></pre>
+
+    <h2>4. Inheritance</h2>
+    <p>Inheritance allows a class to inherit attributes and methods from another class. Here, we have a base class <code>Animal</code> and a derived class <code>Cat</code> that inherits from it:</p>
+    <pre><code># Inheritance example
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):  # Base method
+        return "Some sound"
+
+class Cat(Animal):  # Cat inherits from Animal
+    def speak(self):  # Overriding the base method
+        return "Meow!"
+
+# Creating an object of the Cat class
+cat1 = Cat("Whiskers")
+print(cat1.name)       # Output: Whiskers
+print(cat1.speak())    # Output: Meow!</code></pre>
+
+    <h2>5. Encapsulation</h2>
+    <p>Encapsulation is the practice of keeping certain data private within a class. Attributes prefixed with double underscores <code>__</code> are treated as private and cannot be accessed directly from outside the class.</p>
+    <pre><code># Encapsulation in Python
+class BankAccount:
+    def __init__(self, balance=0):
+        self.__balance = balance  # Private attribute
+
+    def deposit(self, amount):  # Method to modify private attribute
+        self.__balance += amount
+
+    def get_balance(self):  # Getter method
+        return self.__balance
+
+# Creating a BankAccount object
+account = BankAccount()
+account.deposit(100)
+print(account.get_balance())  # Output: 100</code></pre>
+
+    <h2>Try Python Online</h2>
+    <p>Use the interactive editor below to try out Python code:</p>
+    <iframe src="googlecolab.html"></iframe>
+
+    <a href="day4.html" class="previous">&laquo; Previous</a>
+    <a href="day6.html" class="next">Next &raquo;</a>
+
+</body>
+
+</html>

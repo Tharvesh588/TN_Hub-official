@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Tutorial: Uploading Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #ffffff;
+            /* Light background */
+            color: #333;
+            /* Dark text for readability */
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        p,
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        pre {
+            background-color: #e7f0fe;
+            /* Light blue background for code snippets */
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+
+        .step {
+            background-color: #f9f9f9;
+            /* Light gray background for step sections */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .btns .previous {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .btns .next {
+            background-color: #04AA6D;
+            color: white;
+            float: right;
+        }
+        .btns a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        .btns a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>GitHub Tutorial: Uploading Projects</h1>
+    <p>This tutorial will guide you through the process of uploading your projects to GitHub.</p>
+
+    <div class="step">
+        <h2>Step 1: Create a GitHub Account</h2>
+        <p>Visit <a href="https://github.com/">github.com</a> and sign up for a new account if you don’t already have
+            one.</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 2: Install Git</h2>
+        <p>Download and install Git on your machine. You can get it from <a
+                href="https://git-scm.com/downloads">git-scm.com</a>.</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 3: Create a New Repository</h2>
+        <ol>
+            <li>Log in to your GitHub account.</li>
+            <li>Click on the "+" icon in the upper right corner and select "New repository".</li>
+            <p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20190826233513/223-1.png"
+                    alt="Create a New Repository" width="600"></p>
+            <li>Fill out the repository name, description, and choose public. Click "Create repository".</li>
+            <p><img src="https://git-scm.com/book/id/v2/images/newrepoform.png" alt="Create a New Repository"
+                    width="600"></p>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h2>Step 4: Initialize a Local Git Repository</h2>
+        <p><img src="https://leading-bell-3e1c02e64d.media.strapiapp.com/Z_4jtk_7c6e490e29.png"
+                alt="Create a New Repository" width="600"></p>
+        <pre><code>cd [path/to/your/project]
+            git init</code></pre>
+        <p>This command will create a new Git repository in your project folder.</p>
+        <pre><code>git add .</code></pre>
+        <p>This command stages all the files in your project directory for the next commit.</p>
+        <pre><code>git commit -m "Initial commit"</code></pre>
+        <p>This command creates a commit with the staged changes and includes a message describing the commit.</p>
+        <pre><code>git remote add origin https://github.com/username/repository-name.git</code></pre>
+        <p>Replace <code>username</code> with your GitHub username and <code>repository-name</code> with the name of
+            your repository.</p>
+        <pre><code>git push -u origin master</code></pre>
+        <p>This command uploads your local commits to the remote repository on GitHub.</p>
+    </div>
+    
+        <div class="step">
+            <h2>Step 5: Verify Your Upload</h2>
+            <p>Visit your GitHub repository in a web browser to ensure that your project files have been uploaded
+                successfully.</p>
+            <p><img src="https://miro.medium.com/v2/resize:fit:1400/1*PEglPDDoJnIU8AutRy8XDg.gif"
+                    alt="Verify Your Upload" width="600"></p>
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>You have successfully uploaded your project to GitHub! Use these steps for future projects to keep your code
+            organized and accessible.</p>
+
+            <div class="btns">
+                <a href="day7.html" class="previous">&laquo; Previous</a>
+        <a href="./../../learning.html" class="next" onclick="alert('You have completed the course!')">Complete &raquo;</a>
+            </div>
+
+</body>
+
+</html>

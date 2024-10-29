@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6:Python Modules</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #ffffff;
+            /* Light background */
+            color: #333;
+            /* Dark text for readability */
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        p,
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #b03060;
+            /* Maroon color on hover */
+        }
+
+        .idle-command {
+            background-color: #f4f4f4;
+            /* Light background for code blocks */
+            color: #333;
+            /* Dark text color */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        .btns .previous {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .btns .next {
+            background-color: #04AA6D;
+            color: white;
+            float: right;
+        }
+        .btns a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        .btns a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .colab-command {
+            background-color: rgba(0, 0, 139, 0.1);
+            /* Light blue background with transparency */
+            color: #000080;
+            /* Dark blue text for visibility */
+            padding: 10px;
+            border: 1px solid #004080;
+            /* Dark blue border */
+            border-radius: 5px;
+            overflow: auto;
+            backdrop-filter: blur(5px);
+            /* Blur effect for background */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Python Day 6: Modules</h1>
+    <p>Python modules allow you to organize your code into separate files and reuse them across different projects.
+        Let’s explore some essential commands for using modules in Python.</p>
+
+    <h2>1. Importing Modules</h2>
+    <p>To use a module, you first need to import it.</p>
+
+    <h3>Command for IDLE:</h3>
+    <div class="idle-command">
+        <code>import math</code>
+    </div>
+
+    <h3>Command for Google Colab:</h3>
+    <div class="colab-command">
+        <code>import math</code>
+    </div>
+
+    <h2>2. Using Specific Functions from a Module</h2>
+    <p>You can import specific functions from a module to save memory and improve performance.</p>
+
+    <h3>Command for IDLE:</h3>
+    <div class="idle-command">
+        <code>from math import sqrt</code>
+    </div>
+
+    <h3>Command for Google Colab:</h3>
+    <div class="colab-command">
+        <code>from math import sqrt</code>
+    </div>
+
+    <h2>3. Installing External Modules</h2>
+    <p>Some modules aren’t built into Python and need to be installed separately. The method varies depending on the
+        environment:</p>
+
+    <h3>Command for IDLE:</h3>
+    <div class="idle-command">
+
+        <pre><code>You can Install Python Idle Module from the command line. Here’s how:
+
+- Open Command Prompt:
+  - Press Windows + R, type cmd, and hit Enter.</code></pre>
+        <h2>4. Install/Uninstall Libraries</h2>
+        <pre><code>Python uses packages to extend its functionality. You can manage these packages using pip, which is included with Python. Here's how to install and uninstall libraries:
+- Install a Library:
+  - In the command prompt, type the following command to install a library (for example, requests):
+    pip install requests
+
+- Uninstall a Library:
+  - To uninstall a library, use the following command:
+    pip uninstall requests
+</code></pre>
+
+    </div>
+    <h3>Command for Google Colab:</h3>
+    <div class="colab-command">
+        <code>!pip install requests</code>
+    </div>
+
+    <h2>4. Checking Installed Modules</h2>
+    <p>List all the installed modules to confirm installation or check for available modules.</p>
+
+    <h3>Command for IDLE:</h3>
+    <div class="idle-command">
+        <code>pip list</code>
+    </div>
+
+    <h3>Command for Google Colab:</h3>
+    <div class="colab-command">
+        <code>!pip list</code>
+    </div>
+
+    <h2>5. Exploring Module Functions</h2>
+    <p>Use the <code>dir()</code> function to view all functions and attributes available in a module.</p>
+
+    <h3>Command for IDLE:</h3>
+    <div class="idle-command">
+        <code>dir(math)</code>
+    </div>
+
+    <h3>Command for Google Colab:</h3>
+    <div class="colab-command">
+        <code>dir(math)</code>
+    </div>
+
+    <p>Remember to use <code>import</code> to bring any module or function into your workspace, and always check if the
+        module is available natively or needs to be installed.</p>
+    <hr>
+    <hr>
+
+    <h1>Play with Libraries: cv2, Pandas, Matplotlib</h1>
+
+    <h2>1. OpenCV (cv2)</h2>
+
+
+    <h3>1. Video Capture using OpenCV</h3>
+    <p>The following code snippets show how to capture video from your webcam.</p>
+    <p>This page demonstrates how to capture video from a webcam using OpenCV's <code>VideoCapture</code> class.</p>
+
+    <h3>Command for IDLE:</h3>
+    <div class="idle-command">
+        <code>
+import cv2<br>
+<br>
+# Create a VideoCapture object<br>
+cap = cv2.VideoCapture(0)<br>
+<br>
+while True:<br>
+    # Capture frame-by-frame<br>
+    ret, frame = cap.read()<br>
+    if not ret:<br>
+        break<br>
+<br>
+    # Display the resulting frame<br>
+    cv2.imshow('Webcam Feed', frame)<br>
+<br>
+    # Press 'q' to exit the loop<br>
+    if cv2.waitKey(1) & 0xFF == ord('q'):<br>
+        break<br>
+<br>
+# Release the capture and close windows<br>
+cap.release()<br>
+cv2.destroyAllWindows()
+        </code>
+    </div>
+
+    <h3>Command for Google Colab:</h3>
+    <div class="colab-command">
+        <code>
+import cv2<br>
+from google.colab.patches import cv2_imshow<br>
+<br>
+# Create a VideoCapture object<br>
+cap = cv2.VideoCapture(0)<br>
+<br>
+while True:<br>
+    # Capture frame-by-frame<br>
+    ret, frame = cap.read()<br>
+    if not ret:<br>
+        break<br>
+<br>
+    # Display the resulting frame<br>
+    cv2_imshow(frame)<br>
+<br>
+    # Press 'q' to exit the loop<br>
+    if cv2.waitKey(1) & 0xFF == ord('q'):<br>
+        break<br>
+<br>
+# Release the capture<br>
+cap.release()
+        </code>
+    </div>
+
+    <p>Note: When using Google Colab, the webcam will need permission to be accessed.</p>
+    <p>To stop the video feed in both environments, press the 'q' key.</p>
+
+
+    <h2>2. Pandas</h2>
+    <p>Pandas is a powerful library for data manipulation and analysis.</p>
+
+    <h3>Creating a DataFrame and Displaying It</h3>
+    <p>Create a simple DataFrame and display it.</p>
+
+    <h4>Command for IDLE:</h4>
+    <div class="idle-command">
+        <code>import pandas as pd<br>
+data = {'Name': ['Alice', 'Bob', 'Charlie'],<br>
+        'Age': [25, 30, 35]}<br>
+df = pd.DataFrame(data)<br>
+print(df)</code>
+    </div>
+
+    <h4>Command for Google Colab:</h4>
+    <div class="colab-command">
+        <code>import pandas as pd<br>
+data = {'Name': ['Alice', 'Bob', 'Charlie'],<br>
+        'Age': [25, 30, 35]}<br>
+df = pd.DataFrame(data)<br>
+df</code>
+    </div>
+
+    <h2>3. Matplotlib</h2>
+    <p>Matplotlib is a plotting library for creating static, animated, and interactive visualizations in Python.</p>
+
+    <h3>Basic Plotting</h3>
+    <p>Plot a simple line graph using Matplotlib.</p>
+
+    <h4>Command for IDLE:</h4>
+    <div class="idle-command">
+        <code>import matplotlib.pyplot as plt<br>
+x = [1, 2, 3, 4]<br>
+y = [10, 20, 25, 30]<br>
+plt.plot(x, y)<br>
+plt.title('Sample Plot')<br>
+plt.xlabel('X-axis')<br>
+plt.ylabel('Y-axis')<br>
+plt.show()</code>
+    </div>
+
+    <h4>Command for Google Colab:</h4>
+    <div class="colab-command">
+        <code>import matplotlib.pyplot as plt<br>
+x = [1, 2, 3, 4]<br>
+y = [10, 20, 25, 30]<br>
+plt.plot(x, y)<br>
+plt.title('Sample Plot')<br>
+plt.xlabel('X-axis')<br>
+plt.ylabel('Y-axis')<br>
+plt.show()</code>
+    </div>
+
+    <p>Feel free to experiment with these libraries and explore their extensive functionalities!</p>
+
+    <div class="btns">
+        <a href="day5.html" class="previous">&laquo; Previous</a>
+        <a href="day7.html" class="next">Next &raquo;</a>
+    </div>
+
+
+</body>
+
+</html>

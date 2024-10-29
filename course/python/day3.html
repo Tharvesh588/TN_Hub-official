@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 3: More Stuff with File Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow: auto;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .previous {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .next {
+            background-color: #04AA6D;
+            color: white;
+            float: right;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Python Day 3: More Stuff with File Handling</h1>
+
+    <!--Important Message-->
+    <p><strong>Important Message:</strong> Please Make sure you have created a seprate folder for each project, and ensure the source file "main.py" present in that specific folder</p>
+    
+
+    <h2>1. Opening and Reading Files</h2>
+    <pre><code># Opening a file in read mode
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# Output: Contents of 'example.txt' are printed</code></pre>
+
+    <h2>2. Writing to Files</h2>
+    <pre><code># Writing to a file
+with open("example.txt", "w") as file:
+    file.write("Hello, this is a new line of text!")
+
+# Output: 'example.txt' now contains the new text</code></pre>
+
+    <h2>3. Appending to Files</h2>
+    <pre><code># Appending text to a file
+with open("example.txt", "a") as file:
+    file.write("\nThis text is appended to the file.")
+
+# Output: Additional text added at the end of 'example.txt'</code></pre>
+
+    <h2>4. Reading Files Line by Line</h2>
+    <pre><code># Reading file line by line
+with open("example.txt", "r") as file:
+    for line in file:
+        print(line.strip())  # strip() removes extra whitespace
+
+# Output: Each line of 'example.txt' printed separately</code></pre>
+
+    <h2>5. Handling Exceptions</h2>
+    <pre><code># Handling file operations with try-except
+try:
+    with open("non_existent_file.txt", "r") as file:
+        content = file.read()
+except FileNotFoundError:
+    print("The file does not exist.")
+
+# Output: Prints an error message if file is not found</code></pre>
+
+    <a href="day2.html" class="previous">&laquo; Previous</a>
+    <a href="day4.html" class="next">Next &raquo;</a>
+
+</body>
+
+</html>

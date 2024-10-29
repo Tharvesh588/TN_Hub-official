@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Python Projects for Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #ffffff; /* Light background */
+            color: #333; /* Dark text for readability */
+        }
+
+        .btns .previous {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .btns .next {
+            background-color: #04AA6D;
+            color: white;
+            float: right;
+        }
+        .btns a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        .btns a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        p,
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #b03060; /* Maroon color on hover */
+        }
+
+        .project {
+            background-color: #f9f9f9; /* Light gray background for project sections */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #e7f0fe; /* Light blue background for code snippets */
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Day 7: Basic Python Projects for Resume</h1>
+    <p>These basic Python projects can help demonstrate your skills and enhance your resume. Each project highlights different aspects of Python programming.</p>
+
+    <div class="project">
+        <h2>1. To-Do List Application</h2>
+        <p>This application allows users to add, remove, and view tasks. It can be developed as a command-line application.</p>
+
+        <h3>Algorithm</h3>
+        <ul>
+            <li>Initialize an empty list for tasks.</li>
+            <li>Display the menu options: Add, Remove, View, Exit.</li>
+            <li>If the user chooses to add a task, prompt for the task description and append it to the list.</li>
+            <li>If the user chooses to remove a task, prompt for the task number and remove it from the list.</li>
+            <li>If the user chooses to view tasks, display all tasks in the list.</li>
+            <li>Repeat until the user chooses to exit.</li>
+        </ul>
+
+        <h3>Code</h3>
+        <pre><code>
+tasks = []
+
+def display_tasks():
+    if not tasks:
+        print("No tasks found.")
+    else:
+        for i, task in enumerate(tasks, start=1):
+            print(f"{i}. {task}")
+
+while True:
+    print("\nMenu:")
+    print("1. Add Task")
+    print("2. Remove Task")
+    print("3. View Tasks")
+    print("4. Exit")
+    choice = input("Choose an option: ")
+
+    if choice == '1':
+        task = input("Enter task: ")
+        tasks.append(task)
+    elif choice == '2':
+        display_tasks()
+        index = int(input("Enter task number to remove: ")) - 1
+        if 0 <= index < len(tasks):
+            tasks.pop(index)
+        else:
+            print("Invalid task number.")
+    elif choice == '3':
+        display_tasks()
+    elif choice == '4':
+        break
+    else:
+        print("Invalid choice.")
+        </code></pre>
+    </div>
+
+    <div class="project">
+        <h2>2. Simple Calculator</h2>
+        <p>Create a basic calculator that can perform operations such as addition, subtraction, multiplication, and division.</p>
+
+        <h3>Algorithm</h3>
+        <ul>
+            <li>Display a menu of operations: Add, Subtract, Multiply, Divide.</li>
+            <li>Prompt the user to select an operation.</li>
+            <li>Request two numbers from the user.</li>
+            <li>Perform the selected operation and display the result.</li>
+            <li>Repeat until the user chooses to exit.</li>
+        </ul>
+
+        <h3>Code</h3>
+        <pre><code>
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        return "Cannot divide by zero!"
+    return x / y
+
+while True:
+    print("\nCalculator Menu:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Exit")
+    choice = input("Choose an operation: ")
+
+    if choice in ['1', '2', '3', '4']:
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+
+        if choice == '1':
+            print(f"Result: {add(num1, num2)}")
+        elif choice == '2':
+            print(f"Result: {subtract(num1, num2)}")
+        elif choice == '3':
+            print(f"Result: {multiply(num1, num2)}")
+        elif choice == '4':
+            print(f"Result: {divide(num1, num2)}")
+    elif choice == '5':
+        break
+    else:
+        print("Invalid choice.")
+        </code></pre>
+    </div>
+
+    <div class="project">
+        <h2>3. ATM Simulator</h2>
+        <p>The ATM simulator allows users to perform basic banking functions, such as checking their balance, depositing money, and withdrawing money.</p>
+
+        <h3>Algorithm</h3>
+        <ul>
+            <li>Initialize a variable for the account balance (e.g., $1000).</li>
+            <li>Display menu options: Check Balance, Deposit, Withdraw, Exit.</li>
+            <li>If the user chooses to check balance, display the current balance.</li>
+            <li>If the user chooses to deposit, prompt for the amount and add it to the balance.</li>
+            <li>If the user chooses to withdraw, prompt for the amount and subtract it from the balance if sufficient funds are available.</li>
+            <li>Repeat until the user chooses to exit.</li>
+        </ul>
+
+        <h3>Code</h3>
+        <pre><code>
+balance = 1000.0
+
+while True:
+    print("\nATM Menu:")
+    print("1. Check Balance")
+    print("2. Deposit Money")
+    print("3. Withdraw Money")
+    print("4. Exit")
+    choice = input("Choose an option: ")
+
+    if choice == '1':
+        print(f"Your current balance is: ${balance:.2f}")
+    elif choice == '2':
+        amount = float(input("Enter amount to deposit: "))
+        balance += amount
+        print(f"${amount:.2f} deposited successfully.")
+    elif choice == '3':
+        amount = float(input("Enter amount to withdraw: "))
+        if amount > balance:
+            print("Insufficient funds!")
+        else:
+            balance -= amount
+            print(f"${amount:.2f} withdrawn successfully.")
+    elif choice == '4':
+        break
+    else:
+        print("Invalid choice.")
+        </code></pre>
+    </div>
+
+    <div class="project">
+        <h2>4. Personal Budget Tracker</h2>
+        <p>Create a budget tracker that allows users to input income and expenses, categorize them, and visualize their spending.</p>
+
+        <h3>Algorithm</h3>
+        <ul>
+            <li>Initialize empty lists for income and expenses.</li>
+            <li>Display menu options: Add Income, Add Expense, View Summary, Exit.</li>
+            <li>If the user chooses to add income or expense, prompt for the amount and category.</li>
+            <li>Store the data in the respective list.</li>
+            <li>If the user chooses to view the summary, calculate total income, total expenses, and net balance.</li>
+            <li>Repeat until the user chooses to exit.</li>
+        </ul>
+
+        <h3>Code</h3>
+        <pre><code>
+incomes = []
+expenses = []
+
+while True:
+    print("\nBudget Tracker Menu:")
+    print("1. Add Income")
+    print("2. Add Expense")
+    print("3. View Summary")
+    print("4. Exit")
+    choice = input("Choose an option: ")
+
+    if choice == '1':
+        amount = float(input("Enter income amount: "))
+        category = input("Enter income category: ")
+        incomes.append({'amount': amount, 'category': category})
+    elif choice == '2':
+        amount = float(input("Enter expense amount: "))
+        category = input("Enter expense category: ")
+        expenses.append({'amount': amount, 'category': category})
+    elif choice == '3':
+        total_income = sum(item['amount'] for item in incomes)
+        total_expenses = sum(item['amount'] for item in expenses)
+        balance = total_income - total_expenses
+        print(f"Total Income: {total_income:.2f}")
+        print(f"Total Expenses: {total_expenses:.2f}")
+        print(f"Net Balance: {balance:.2f}")
+    elif choice == '4':
+        break
+    else:
+        print("Invalid choice.")
+        </code></pre>
+    </div>
+
+    <div class="project">
+        <h2>5. Quiz Application</h2>
+        <p>Develop a quiz application that quizzes users on various topics, keeping track of scores and providing feedback.</p>
+
+        <h3>Algorithm</h3>
+        <ul>
+            <li>Define a list of questions and answers.</li>
+            <li>Initialize a score counter.</li>
+            <li>Loop through each question, displaying it to the user and prompting for an answer.</li>
+            <li>If the answer is correct, increase the score.</li>
+            <li>At the end, display the final score.</li>
+        </ul>
+
+        <h3>Code</h3>
+        <pre><code>
+questions = {
+    "What is the capital of France?": "Paris",
+    "What is 2 + 2?": "4",
+    "What is the color of the sky?": "blue",
+}
+
+score = 0
+
+for question, answer in questions.items():
+    user_answer = input(question + " ")
+    if user_answer.strip().lower() == answer.lower():
+        print("Correct!")
+        score += 1
+    else:
+        print("Wrong! The correct answer is:", answer)
+
+print(f"Your final score is: {score}/{len(questions)}")
+        </code></pre>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Completing these projects can significantly enhance your Python skills and make your resume stand out. Each project showcases your ability to solve problems and create functional applications.</p>
+    
+    <div class="btns">
+        <a href="day6.html" class="previous">&laquo; Previous</a>
+        <a href="github.html" class="next">Next &raquo;</a>
+    </div>
+</body>
+
+</html>

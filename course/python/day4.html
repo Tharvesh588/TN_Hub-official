@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Day 4: Python Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow: auto;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .previous {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .next {
+            background-color: #04AA6D;
+            color: white;
+            float: right;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Python Day 4: Python Functions</h1>
+
+    <h2>1. Defining and Calling a Function</h2>
+    <pre><code># Defining a simple function
+def greet():
+    print("Hello, welcome to Python functions!")
+
+# Calling the function
+greet()
+
+# Output: Hello, welcome to Python functions!</code></pre>
+
+    <h2>2. Function with Parameters</h2>
+    <pre><code># Function with parameters
+def greet(name):
+    print(f"Hello, {name}!")
+
+# Calling the function with an argument
+greet("Alice")
+
+# Output: Hello, Alice!</code></pre>
+
+    <h2>3. Return Values</h2>
+    <pre><code># Function with a return value
+def add(a, b):
+    return a + b
+
+# Calling the function and storing the result
+result = add(5, 3)
+print(result)
+
+# Output: 8</code></pre>
+
+    <h2>4. Default Parameters</h2>
+    <pre><code># Function with a default parameter
+def greet(name="Guest"):
+    print(f"Hello, {name}!")
+
+# Calling function without argument
+greet()
+
+# Calling function with an argument
+greet("Bob")
+
+# Output: 
+# Hello, Guest!
+# Hello, Bob!</code></pre>
+
+    <h2>5. Lambda Functions</h2>
+    <pre><code># Using a lambda function
+square = lambda x: x * x
+
+# Calling the lambda function
+print(square(5))
+
+# Output: 25</code></pre>
+
+    <h2>6. Function with Multiple Return Values</h2>
+    <pre><code># Function returning multiple values
+def get_min_max(numbers):
+    return min(numbers), max(numbers)
+
+# Calling the function
+minimum, maximum = get_min_max([4, 7, 2, 8, 1])
+print(f"Min: {minimum}, Max: {maximum}")
+
+# Output: Min: 1, Max: 8</code></pre>
+
+    <a href="day3.html" class="previous">&laquo; Previous</a>
+    <a href="day5.html" class="next">Next &raquo;</a>
+
+</body>
+
+</html>
