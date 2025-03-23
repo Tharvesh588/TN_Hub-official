@@ -14,13 +14,16 @@
     <link rel="stylesheet" href="style.css">
 
     <!--meta information-->
-    <meta name="description" content="TM Nexus Hub is a Community that aims to empower student developers by providing them with resources, tools, and opportunities to enhance their skills by new Learnings with real time deployments and projects.">
-    <meta name="keywords" content="student developers, resources, tools, opportunities, portfolio, coding, programming, web development, software development, computer science, technology, education,freelancing">
+    <meta name="description"
+        content="TM Nexus Hub is a Community that aims to empower student developers by providing them with resources, tools, and opportunities to enhance their skills by new Learnings with real time deployments and projects.">
+    <meta name="keywords"
+        content="student developers, resources, tools, opportunities, portfolio, coding, programming, web development, software development, computer science, technology, education,freelancing">
     <meta name="author" content="Tharvesh Muhaideen A">
     <meta name="robots" content="index, follow">
-     <!-- Open Graph Tags for Social Media Sharing -->
+    <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="TM Nexus Hub">
-    <meta property="og:description" content="TM Nexus Hub is a Community that aims to empower student developers by providing them with resources, tools, and opportunities to enhance their skills by new Learnings with real time deployments and projects.">
+    <meta property="og:description"
+        content="TM Nexus Hub is a Community that aims to empower student developers by providing them with resources, tools, and opportunities to enhance their skills by new Learnings with real time deployments and projects.">
     <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://tharvesh588.github.io/TN_Hub-official/">
     <meta property="og:type" content="website">
@@ -73,7 +76,7 @@
             <div class="column">
                 <i class="fa fa-lightbulb-o"></i>
                 <h3>Vision</h3>
-                <p>TN’s Hub provides a learning community where students and developers can gain knowledge, collaborate,
+                <p>TM Nexus Hub provides a learning community where students and developers can gain knowledge, collaborate,
                     and deploy projects without financial barriers.</p>
             </div>
             <div class="column">
@@ -191,9 +194,9 @@
         <div class="community-row">
             <div class="community-column">
                 <h3>New Learnings</h3>
-            <p>Learn and develope the new things without inversement.</p>
-            <a href="learning.html" target="_blank" class="button"><i class="fa fa-book"></i> Start
-                Learning</a>
+                <p>Learn and develope the new things without inversement.</p>
+                <a href="learning.html" target="_blank" class="button"><i class="fa fa-book"></i> Start
+                    Learning</a>
             </div>
 
             <!-- <div class="community-column">
@@ -213,16 +216,17 @@
         <form action="https://formsubmit.co/tharvesh2026@gmail.com" method="post">
             <label for="name">Your Name:</label><br>
             <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
-        
+
             <label for="email">Your Email:</label><br>
             <input type="email" id="email" name="email" placeholder="Your Email" required><br><br>
-        
+
             <label for="message">Your Message:</label><br>
             <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea><br><br>
-        
+
             <button type="submit">Send Message</button>
         </form>
     </div>
+
 
     <!-- Footer -->
     <footer>
@@ -233,6 +237,19 @@
 
         <p>&copy; TM Nexus Hub.Since 2k24</p>
     </footer>
+    <!-- Chatbot Button -->
+    <button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+
+    <!-- Chatbot Popup -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div class="chatbot-header">NexaGen Chatbot</div>
+        <div class="chatbot-body">
+            <iframe src="https://nexagen-ai.vercel.app/" width="100%" height="450px" style="border: none;"></iframe>
+        </div>
+        <div class="chatbot-footer">
+            <button onclick="toggleChatbot()">Close</button>
+        </div>
+    </div>
 
     <!-- JavaScript to Toggle Sidebar -->
     <script>
@@ -254,6 +271,12 @@
                 }
             }
         };
+
+        // Toggle Chatbot
+        function toggleChatbot() {
+            const chatbotContainer = document.getElementById("chatbot-container");
+            chatbotContainer.style.display = chatbotContainer.style.display === "block" ? "none" : "block";
+        }
     </script>
 
 </body>
