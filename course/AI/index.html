@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <!-- icon -->
+    <link rel="shortcut icon" href="logo.png" type="image/png">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .course {
+            width: 300px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .course img {
+            width: 100%;
+            height: 200px;
+            object-fit: fill;
+        }
+
+        .course h3 {
+            text-align: center;
+            padding: 10px;
+            background-color: #2e8b57;
+            color: white;
+            margin: 0;
+        }
+
+        .course:hover {
+            transform: scale(1.05);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .popup h3 {
+            margin-top: 0;
+        }
+
+        .popup table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        .popup table,
+        .popup th,
+        .popup td {
+            border: 1px solid #ddd;
+        }
+
+        .popup th,
+        .popup td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .close-btn,
+        .start-btn {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .close-btn {
+            background-color: #d9534f;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            padding: 64px;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            padding: 8px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ddd;
+        }
+
+        footer p {
+            margin-top: 32px;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            .navbar .menu-icon {
+                display: block;
+            }
+
+            .navbar a {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 48px;
+            }
+
+            .header p {
+                font-size: 18px;
+            }
+
+            .section .row {
+                flex-direction: column;
+            }
+
+            .section .column {
+                padding: 16px 0;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#007070', secondary: '#005050' },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px', 'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {
+            display: none;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #64748b;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .custom-checkbox.checked {
+            background-color: #007070;
+            border-color: #007070;
+        }
+
+        .custom-checkbox.checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e1;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #007070;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .custom-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+        }
+
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #007070;
+            cursor: pointer;
+        }
+
+        .custom-range::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #007070;
+            cursor: pointer;
+            border: none;
+        }
+
+        .custom-radio {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #64748b;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .custom-radio.checked {
+            border-color: #007070;
+        }
+
+        .custom-radio.checked::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #007070;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="md:w-5/5">
+        <h3 class="text-2xl font-bold mb-8 text-center">Explore More</h3>
+        <!-- Search and Sort Bar -->
+        <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+            <div class="flex flex-col md:flex-row justify-between gap-4">
+                <div class="flex items-center">
+                    <div class="ml-8 text-md text-gray-600">
+                        <span>Enjoy Your Learnings</span>
+                    </div>
+                    <div class="relative w-full md:w-80">
+                        <input type="search" placeholder="Search courses..."
+                            class="w-full bg-gray-50 px-4 py-2 rounded-full border-none text-sm" />
+                        <div class="absolute right-3 top-2 w-5 h-5 flex items-center justify-center text-gray-400">
+                            <i class="ri-search-line"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4 text-sm text-gray-600">
+                        <span>50 courses found</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Course Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Course Card 1 -->
+            <a href="https://www.freecodecamp.org/learn/responsive-web-design/#basic-css" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=modern%2520web%2520development%2520course%2520thumbnail%2520showing%2520HTML%2520CSS%2520code%2520on%2520screen%2520with%2520clean%2520minimal%2520design%252C%2520professional%2520lighting%252C%2520high%2520quality%2520educational%2520content%252C%2520blue%2520color%2520scheme&width=400&height=225&seq=10&orientation=landscape"
+                        alt="Basic CSS" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        HTML/CSS
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">Basic CSS (freeCodeCamp)</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520female%2520web%2520developer%2520instructor%2520with%2520glasses%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=11&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Rebecca Johnson</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.8 (1,245 reviews)</span>
+                    </div>
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Continue Learning
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 2 -->
+            <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=javascript%2520programming%2520course%2520thumbnail%2520showing%2520code%2520editor%2520with%2520javascript%2520syntax%2520highlighted%252C%2520modern%2520clean%2520design%252C%2520yellow%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=12&orientation=landscape"
+                        alt="JavaScript Algorithms & Data Structures" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                        JavaScript
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        JavaScript Algorithms & Data Structures (freeCodeCamp)
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520male%2520javascript%2520developer%2520instructor%252C%2520with%2520beard%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=13&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Daniel Martinez</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.9 (2,187 reviews)</span>
+                    </div>
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Continue Learning
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 3 -->
+            <a href="https://www.sololearn.com/Course/CSS/" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=css%2520flexbox%2520and%2520grid%2520course%2520thumbnail%2520showing%2520responsive%2520layout%2520designs%252C%2520colorful%2520grid%2520patterns%252C%2520clean%2520modern%2520design%252C%2520professional%2520educational%2520content&width=400&height=225&seq=14&orientation=landscape"
+                        alt="CSS Fundamentals" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        HTML/CSS
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        CSS Fundamentals (SoloLearn)
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520female%2520web%2520developer%2520instructor%2520with%2520short%2520hair%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=15&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Sophia Williams</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.0 (956 reviews)</span>
+                    </div>
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Continue Learning
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 4 -->
+            <a href="https://www.freecodecamp.org/learn/python-for-everybody/" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=python%2520programming%2520course%2520thumbnail%2520showing%2520python%2520code%2520and%2520data%2520visualization%252C%2520clean%2520modern%2520design%252C%2520blue%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=16&orientation=landscape"
+                        alt="Python Stack" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        Python
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        Python Fundamentals for Beginners
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520male%2520python%2520developer%2520instructor%2520with%2520glasses%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=17&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">James Wilson</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.7 (1,876 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Continue Learning
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 5 -->
+            <a href="https://www.sololearn.com/Course/JavaScript/" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=javascript%2520frameworks%2520course%2520thumbnail%2520showing%2520react%2520vue%2520angular%2520logos%252C%2520modern%2520clean%2520design%252C%2520code%2520editor%2520in%2520background%252C%2520professional%2520educational%2520content&width=400&height=225&seq=18&orientation=landscape"
+                        alt="JavaScript Fundamentals" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                        JavaScript
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">
+                        Beginner
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        JavaScript Fundamentals (SoloLearn)
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520female%2520javascript%2520developer%2520instructor%252C%2520with%2520long%2520hair%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=19&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Emily Chen</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.6 (1,543 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 6 -->
+            <a href="https://readdy.ai/home/c705d7e8-18f4-4fb3-a4d5-9f7ade91b642/af948f57-62bb-4674-a7cf-394d4a4c9510"
+                data-readdy="true"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=python%2520data%2520science%2520course%2520thumbnail%2520showing%2520data%2520visualizations%2520and%2520charts%252C%2520clean%2520modern%2520design%252C%2520blue%2520and%2520green%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=20&orientation=landscape"
+                        alt="Python Data Science" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        Python
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                        Intermediate
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        Python for Data Science and Machine Learning
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520male%2520data%2520scientist%2520instructor%2520with%2520beard%252C%2520glasses%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=21&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Dr. Robert Kim</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.2 (1,124 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 7 -->
+            <a href="https://alison.com/course/introduction-to-css3" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=responsive%2520web%2520design%2520course%2520thumbnail%2520showing%2520website%2520layouts%2520on%2520different%2520devices%252C%2520clean%2520modern%2520design%252C%2520blue%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=22&orientation=landscape"
+                        alt="Introduction to CSS3" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        HTML/CSS
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">
+                        Beginner
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        Introduction to CSS3 (Alison)
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520male%2520web%2520designer%2520instructor%252C%2520with%2520stylish%2520haircut%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=23&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Alex Thompson</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.9 (2,345 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 8 -->
+            <a href="https://alison.com/course/diploma-in-javascript-development" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=javascript%2520algorithms%2520course%2520thumbnail%2520showing%2520code%2520and%2520flowcharts%252C%2520clean%2520modern%2520design%252C%2520yellow%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=24&orientation=landscape"
+                        alt="Diploma in JavaScript Development" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                        JavaScript
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                        Intermediate
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        Diploma in JavaScript Development (Alison)
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520female%2520computer%2520science%2520instructor%252C%2520with%2520glasses%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=25&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Dr. Sarah Johnson</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.7 (1,654 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 9 -->
+            <a href="https://readdy.ai/home/c705d7e8-18f4-4fb3-a4d5-9f7ade91b642/af948f57-62bb-4674-a7cf-394d4a4c9510"
+                data-readdy="true"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=python%2520web%2520development%2520course%2520thumbnail%2520showing%2520flask%2520django%2520frameworks%252C%2520clean%2520modern%2520design%252C%2520blue%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=26&orientation=landscape"
+                        alt="Python Web Development" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        Python
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                        Intermediate
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        Python Web Development with Flask and Django
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520male%2520python%2520developer%2520instructor%252C%2520with%2520casual%2520attire%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=27&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Michael Garcia</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.1 (987 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 10 -->
+            <a href="https://www.mygreatlearning.com/academy/learn-for-free/courses/html5-css3" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=web%2520accessibility%2520course%2520thumbnail%2520showing%2520inclusive%2520design%2520principles%252C%2520clean%2520modern%2520design%252C%2520blue%2520and%2520purple%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=28&orientation=landscape"
+                        alt="HTML5 & CSS3" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        HTML/CSS
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                        Intermediate
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        HTML5 & CSS3 (Great Learning Academy)
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520female%2520accessibility%2520expert%2520instructor%252C%2520with%2520glasses%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=29&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Jennifer Lee</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.8 (1,432 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 11 -->
+            <a href="https://alison.com/course/diploma-in-advanced-css3-and-sass" target="_blank"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=javascript%2520testing%2520course%2520thumbnail%2520showing%2520test%2520driven%2520development%2520concepts%252C%2520clean%2520modern%2520design%252C%2520yellow%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=30&orientation=landscape"
+                        alt="Advanced CSS3 & Sass" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        HTML/CSS
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">
+                        Advanced
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        Advanced CSS3 & Sass (Alison)
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520male%2520software%2520engineer%2520instructor%252C%2520with%2520beard%252C%2520glasses%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=31&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">David Rodriguez</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.3 (876 reviews)</span>
+                    </div>
+
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+            <!-- Course Card 12 -->
+            <a href="https://readdy.ai/home/c705d7e8-18f4-4fb3-a4d5-9f7ade91b642/af948f57-62bb-4674-a7cf-394d4a4c9510"
+                data-readdy="true"
+                class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:transform hover:scale-105">
+                <div class="relative">
+                    <img src="https://readdy.ai/api/search-image?query=python%2520automation%2520course%2520thumbnail%2520showing%2520scripts%2520and%2520automation%2520workflows%252C%2520clean%2520modern%2520design%252C%2520blue%2520accents%252C%2520professional%2520educational%2520content&width=400&height=225&seq=32&orientation=landscape"
+                        alt="Python Automation" class="w-full h-48 object-cover" />
+                    <div
+                        class="absolute top-3 left-3 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                        Python
+                    </div>
+                    <div
+                        class="absolute top-3 right-3 px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">
+                        Beginner
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold mb-2">
+                        Python Essentials 1: Basic Programming
+                    </h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-6 h-6 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520a%2520female%2520python%2520developer%2520instructor%252C%2520with%2520casual%2520attire%252C%2520smiling%252C%2520high%2520quality%252C%2520studio%2520lighting&width=50&height=50&seq=33&orientation=squarish"
+                                alt="Instructor" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-sm text-gray-600">Olivia Martinez</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400 mr-2">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-sm text-gray-600">4.9 (2,156 reviews)</span>
+                    </div>
+                    <button
+                        class="w-full bg-primary hover:bg-opacity-90 text-white py-2 font-medium !rounded-button whitespace-nowrap">
+                        Enroll Now
+                    </button>
+                </div>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <h3>Stay Connected</h3>
+        <a href="https://www.linkedin.com/in/tharvesh2005" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a href="https://www.github.com/Tharvesh588" target="_blank"><i class="fa fa-github"></i></a>
+        <a href="https://www.youtube.com/@TharveshNexus_1042" target="_blank"><i class="fa fa-youtube"></i></a>
+
+        <p>&copy; TM Nexus Hub. Since 2k24</p>
+    </footer>
+
+
+
+</body>
+
+</html>

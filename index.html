@@ -1,284 +1,694 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TM Nexus Hub - Empowering Student Developers</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <!--icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
     <link rel="shortcut icon" href="logo.png" type="image/png">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-
-    <!--meta information-->
-    <meta name="description"
-        content="TM Nexus Hub is a Community that aims to empower student developers by providing them with resources, tools, and opportunities to enhance their skills by new Learnings with real time deployments and projects.">
-    <meta name="keywords"
-        content="student developers, resources, tools, opportunities, portfolio, coding, programming, web development, software development, computer science, technology, education,freelancing">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="TM Nexus Hub empowers student developers with free resources and community support">
+    <meta name="keywords" content="student developers, coding, programming, web development, free learning">
     <meta name="author" content="Tharvesh Muhaideen A">
-    <meta name="robots" content="index, follow">
-    <!-- Open Graph Tags for Social Media Sharing -->
-    <meta property="og:title" content="TM Nexus Hub">
-    <meta property="og:description"
-        content="TM Nexus Hub is a Community that aims to empower student developers by providing them with resources, tools, and opportunities to enhance their skills by new Learnings with real time deployments and projects.">
-    <meta property="og:image" content="logo.png">
-    <meta property="og:url" content="https://tharvesh588.github.io/TN_Hub-official/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="TM Nexus Hub">
-
-
+    
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #007070 0%, #00a0a0 100%);
+        }
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+    </style>
 </head>
-
-<body>
-
+<body class="bg-gray-50">
     <!-- Navbar -->
-    <div class="navbar">
-        <a href="#home" class="logo">TM Nexus Hub</a>
-        <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div>
-        <div class="nav-links">
-            <a href="#vision">VISION</a>
-            <a href="#audience">AUDIENCE</a>
-            <a href="#platform">PLATFORM</a>
-            <a href="#community">LEARNING</a>
-            <a href="#value">VALUE</a>
-            <a href="#contact"></i> CONTACT</a>
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-xl font-bold text-gray-900">TM Nexus</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#vision" class="text-gray-700 hover:text-gray-900 font-medium">VISION</a>
+                    <a href="#audience" class="text-gray-700 hover:text-gray-900 font-medium">AUDIENCE</a>
+                    <a href="#platform" class="text-gray-700 hover:text-gray-900 font-medium">PLATFORM</a>
+                    <a href="#community" class="text-gray-700 hover:text-gray-900 font-medium">LEARNING</a>
+                    <a href="#value" class="text-gray-700 hover:text-gray-900 font-medium">VALUE</a>
+                    <div id="authButtons"></div>
+                </div>
+                
+                <!-- Mobile menu button - Only show menu icon, no auth buttons -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!-- Sidebar for Mobile View -->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
-        <a href="#vision">VISION</a>
-        <a href="#audience">AUDIENCE</a>
-        <a href="#value">VALUE</a>
-        <a href="#community">LEARNING</a>
-        <a href="#platform">PLATFORM</a>
-        <a href="#contact">CONTACT</a>
-    </div>
-
-    <!-- Header Section -->
-    <header id="home" class="header">
-        <div>
-            <h1>TM Nexus Hub</h1>
-            <p>Empowering students and developers to learn and deploy new things without any investment.</p>
-            <a href="#vision">Discover More</a>
+        
+        <!-- Mobile menu - No auth buttons here -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#vision" class="block px-3 py-2 text-gray-700 hover:bg-gray-100">VISION</a>
+                <a href="#audience" class="block px-3 py-2 text-gray-700 hover:bg-gray-100">AUDIENCE</a>
+                <a href="#platform" class="block px-3 py-2 text-gray-700 hover:bg-gray-100">PLATFORM</a>
+                <a href="#community" class="block px-3 py-2 text-gray-700 hover:bg-gray-100">LEARNING</a>
+                <a href="#value" class="block px-3 py-2 text-gray-700 hover:bg-gray-100">VALUE</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header id="home" class="relative text-white pt-32 pb-20 h-screen flex items-center justify-center overflow-hidden">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline class="absolute z-0 w-full h-full object-cover">
+            <source src="https://cdn.pixabay.com/video/2024/02/27/202134-917314709_large.mp4" type="video/mp4">
+            <!-- Fallback image if video doesn't load -->
+            <img src="fallback-image.jpg" alt="Background" class="absolute z-0 w-full h-full object-cover">
+        </video>
+        
+        <!-- Dark overlay for better text visibility -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        
+        <!-- Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">TM Nexus Hub</h1>
+            <p class="text-xl md:text-2xl mb-8">Empowering students and developers to learn and deploy new things without any investment.</p>
+            <a href="#vision" class="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition">Discover More</a>
         </div>
     </header>
 
-    <!-- Vision Section -->
-    <div class="section" id="vision">
-        <h3>OUR VISION & MISSION</h3>
-        <p>Building a collaborative community for students and developers</p>
-        <div class="row">
-            <div class="column">
-                <i class="fa fa-lightbulb-o"></i>
-                <h3>Vision</h3>
-                <p>TM Nexus Hub provides a learning community where students and developers can gain knowledge, collaborate,
-                    and deploy projects without financial barriers.</p>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Vision Section -->
+        <section id="vision" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">OUR VISION & MISSION</h2>
+            <p class="text-xl text-center text-gray-600 mb-12">Building a collaborative community for students and developers</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Vision</h3>
+                    <p class="text-gray-600">TM Nexus Hub provides a learning community where students and developers can gain knowledge, collaborate, and deploy projects without financial barriers.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Mission</h3>
+                    <p class="text-gray-600">Empowering students and developers with the resources to build projects and gain real-world experience at zero cost.</p>
+                </div>
             </div>
-            <div class="column">
-                <i class="fa fa-rocket"></i>
-                <h3>Mission</h3>
-                <p>Empowering students and developers with the resources to build projects and gain real-world
-                    experience at zero cost.</p>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Audience Section -->
-    <div class="section" id="audience" style="background-color: #f9f9f9;">
-        <h3>OUR TARGET AUDIENCE</h3>
-        <p>Who TM Nexus Hub is for</p>
-        <div class="row">
-            <div class="column">
-                <i class="fa fa-graduation-cap"></i>
-                <h3>College Students</h3>
-                <p>Engineering, computer science, and IT students seeking hands-on experience.</p>
+        <!-- Audience Section -->
+        <section id="audience" class="py-16 bg-gray-50 rounded-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">OUR TARGET AUDIENCE</h2>
+                <p class="text-xl text-center text-gray-600 mb-12">Who TM Nexus Hub is for</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">College Students</h3>
+                        <p class="text-gray-600">Engineering, computer science, and IT students seeking hands-on experience.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Freelancers</h3>
+                        <p class="text-gray-600">Collaborate, network, and showcase projects for real-world solutions.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Developers</h3>
+                        <p class="text-gray-600">Experienced developers looking to mentor and guide the next generation.</p>
+                    </div>
+                </div>
             </div>
-            <div class="column">
-                <i class="fa fa-briefcase"></i>
-                <h3>Freelancers</h3>
-                <p>Collaborate, network, and showcase projects for real-world solutions.</p>
-            </div>
+        </section>
 
-            <div class="column">
-                <i class="fa fa-users"></i>
-                <h3>Developers</h3>
-                <p>Experienced developers looking to mentor and guide the next generation.</p>
+        <!-- Value Section -->
+        <section id="value" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">OUR VALUE PROPOSITION</h2>
+            <p class="text-xl text-center text-gray-600 mb-12">Why choose TM Nexus Hub?</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Cost-Free Learning</h3>
+                    <p class="text-gray-600">Access resources and learning materials at no cost.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Real-World Experience</h3>
+                    <p class="text-gray-600">Gain hands-on experience through collaborative projects and challenges.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-4xl text-blue-600 mb-4">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Networking Opportunities</h3>
+                    <p class="text-gray-600">Connect with peers, mentors, and industry professionals.</p>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Value Section -->
-    <div class="section" id="value">
-        <h3>OUR VALUE PROPOSITION</h3>
-        <p>Why choose TM Nexus Hub?</p>
-        <div class="row">
-            <div class="column">
-                <i class="fa fa-money"></i>
-                <h3>Cost-Free Learning</h3>
-                <p>Access resources and learning materials at no cost.</p>
+        <!-- Platform Section -->
+        <section id="platform" class="py-16 bg-gray-50 rounded-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">OUR PLATFORM</h2>
+                <p class="text-xl text-center text-gray-600 mb-12">Explore the features of TM Nexus Hub</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Online Learning</h3>
+                        <p class="text-gray-600">Access tutorials, webinars, and workshops from anywhere.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Project Collaboration</h3>
+                        <p class="text-gray-600">Join teams to work on exciting projects and hackathons.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                        <div class="text-4xl text-blue-600 mb-4">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Community Support</h3>
+                        <p class="text-gray-600">Receive guidance and support from fellow members and mentors.</p>
+                    </div>
+                </div>
             </div>
-            <div class="column">
-                <i class="fa fa-certificate"></i>
-                <h3>Real-World Experience</h3>
-                <p>Gain hands-on experience through collaborative projects and challenges.</p>
-            </div>
-            <div class="column">
-                <i class="fa fa-comments"></i>
-                <h3>Networking Opportunities</h3>
-                <p>Connect with peers, mentors, and industry professionals.</p>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Platform Section -->
-    <div class="section" id="platform" style="background-color: #f9f9f9;">
-        <h3>OUR PLATFORM</h3>
-        <p>Explore the features of TM Nexus Hub</p>
-        <div class="row">
-            <div class="column">
-                <i class="fa fa-laptop"></i>
-                <h3>Online Learning</h3>
-                <p>Access tutorials, webinars, and workshops from anywhere.</p>
+        <!-- Community Section -->
+        <section id="community" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">OUR COMMUNITY</h2>
+            <p class="text-xl text-center text-gray-600 mb-12">Building the community step-by-step</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4">Template Gallery</h3>
+                    <p class="text-gray-600 mb-6">Interactive Templates where members can easily access, open for their projects</p>
+                    <a href="gallery.html" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+                        <i class="fas fa-globe mr-2"></i> Visit Templates
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4">Blog</h3>
+                    <p class="text-gray-600 mb-6">Regular updates, coding tutorials, and success stories from our community.</p>
+                    <a href="https://tmnexushub.blogspot.com" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+                        <i class="fas fa-pencil mr-2"></i> Visit Blog
+                    </a>
+                </div>
             </div>
-            <div class="column">
-                <i class="fa fa-code"></i>
-                <h3>Project Collaboration</h3>
-                <p>Join teams to work on exciting projects and hackathons.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4">Chat Community</h3>
+                    <p class="text-gray-600 mb-6">Direct communication channels where members can discuss projects, ask for help, or share knowledge.</p>
+                    <a href="https://chat.whatsapp.com/IQJTisHS8FLLRU5sVSBi5h" target="_blank" class="inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">
+                        <i class="fab fa-whatsapp mr-2"></i> Join WhatsApp Group
+                    </a>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4">Projects Repository</h3>
+                    <p class="text-gray-600 mb-6">Shared GitHub repository where members can contribute to open-source projects.</p>
+                    <a href="https://github.com/TM-Nexus-Hub" target="_blank" class="inline-block bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition">
+                        <i class="fab fa-github mr-2"></i> Visit GitHub
+                    </a>
+                </div>
             </div>
-            <div class="column">
-                <i class="fa fa-thumbs-up"></i>
-                <h3>Community Support</h3>
-                <p>Receive guidance and support from fellow members and mentors.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4">New Learnings</h3>
+                    <p class="text-gray-600 mb-6">Learn and develop new things without investment.</p>
+                    <a href="learning.html" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+                        <i class="fas fa-book mr-2"></i> Start Learning
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Community Section -->
-    <div class="community-section" id="community">
-        <h3 class="community-title">OUR COMMUNITY</h3>
-        <p class="community-description">Building the community step-by-step</p>
-        <div class="community-row">
-            <div class="community-column">
-                <h3>Template Gallery</h3>
-                <p>Interactive Templates where members can easily access, open for their projects</p>
-                <a href="gallery.html" target="_blank" class="button"><i class="fa fa-globe"></i> Visit Templates</a>
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-50 rounded-lg">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">CONTACT US</h2>
+                <p class="text-xl text-center text-gray-600 mb-12">If you have any questions or feedback, feel free to reach out!</p>
+                
+                <form action="https://formsubmit.co/tharvesh2026@gmail.com" method="post" class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Your Message:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Your Message" required 
+                                  class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded font-medium hover:bg-blue-700 transition">
+                        Send Message
+                    </button>
+                </form>
             </div>
-            <div class="community-column">
-                <h3>Blog</h3>
-                <p>Regular updates, coding tutorials, and success stories from our community.</p>
-                <a href="https://tharvesh-nexus.blogspot.com" target="_blank" class="button"><i
-                        class="fa fa-pencil"></i> Visit Blog</a>
-            </div>
-        </div>
-        <div class="community-row">
-            <div class="community-column">
-                <h3>Chat Community</h3>
-                <p>Direct communication channels where members can discuss projects, ask for help, or share knowledge.
-                </p>
-                <a href="https://chat.whatsapp.com/IQJTisHS8FLLRU5sVSBi5h" target="_blank" class="button"><i
-                        class="fa fa-whatsapp"></i> Join WhatsApp Group</a>
-            </div>
-            <div class="community-column">
-                <h3>Projects Repository</h3>
-                <p>Shared GitHub repository where members can contribute to open-source projects.</p>
-                <a href="https://github.com/Tharvesh588" target="_blank" class="button"><i class="fa fa-github"></i>
-                    Visit GitHub</a>
-            </div>
-        </div>
-
-        <div class="community-row">
-            <div class="community-column">
-                <h3>New Learnings</h3>
-                <p>Learn and develope the new things without inversement.</p>
-                <a href="learning.html" target="_blank" class="button"><i class="fa fa-book"></i> Start
-                    Learning</a>
-            </div>
-
-            <!-- <div class="community-column">
-                <h3>New Learnings</h3>
-            <p>Learn and develope the new things without inversement.</p>
-            <a href="https://github.com/YourRepository" target="_blank" class="button"><i class="fa fa-book"></i> Start
-                Learning</a>
-            </div> -->
-        </div>
-
-    </div>
-
-    <!-- Contact Section -->
-    <div class="contact" id="contact">
-        <h3>CONTACT US</h3>
-        <p>If you have any questions or feedback, feel free to reach out!</p>
-        <form action="https://formsubmit.co/tharvesh2026@gmail.com" method="post">
-            <label for="name">Your Name:</label><br>
-            <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
-
-            <label for="email">Your Email:</label><br>
-            <input type="email" id="email" name="email" placeholder="Your Email" required><br><br>
-
-            <label for="message">Your Message:</label><br>
-            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea><br><br>
-
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
-
+        </section>
+          
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <h3>Stay Connected</h3>
-        <a href="https://www.linkedin.com/in/tharvesh2005" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a href="https://www.github.com/Tharvesh588" target="_blank"><i class="fa fa-github"></i></a>
-        <a href="https://www.youtube.com/@TharveshNexus_1042" target="_blank"><i class="fa fa-youtube"></i></a>
-
-        <p>&copy; TM Nexus Hub.Since 2k24</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl font-bold mb-6">Stay Connected</h3>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://www.linkedin.com/in/tharvesh2005" target="_blank" class="text-2xl hover:text-blue-400 transition">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.github.com/Tharvesh588" target="_blank" class="text-2xl hover:text-gray-400 transition">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.youtube.com/@TharveshNexus_1042" target="_blank" class="text-2xl hover:text-red-500 transition">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <p>&copy; TM Nexus Hub. Since 2k24</p>
+        </div>
     </footer>
+
     <!-- Chatbot Button -->
-    <button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+    <button onclick="toggleChatbot()" class="fixed bottom-6 right-6 bg-gray-900 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-gray-800 transition">
+        <i class="fas fa-comment-dots text-2xl"></i>
+    </button>
 
     <!-- Chatbot Popup -->
-    <div id="chatbot-container" class="chatbot-container">
-        <div class="chatbot-header">NexaGen Chatbot</div>
-        <div class="chatbot-body">
-            <iframe src="https://nexagen-ai.vercel.app/" width="100%" height="450px" style="border: none;"></iframe>
+    <div id="chatbotContainer" class="fixed bottom-24 right-6 w-96 bg-white rounded-lg shadow-xl hidden">
+        <div class="bg-gray-900 text-white p-4 rounded-t-lg flex justify-between items-center">
+            <h3 class="font-bold">NexaGen Chatbot</h3>
+            <button onclick="toggleChatbot()" class="text-white hover:text-gray-300">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <div class="chatbot-footer">
-            <button onclick="toggleChatbot()">Close</button>
+        <div class="h-96">
+            <iframe src="https://nexagen-ai.vercel.app/" class="w-full h-full border-0"></iframe>
         </div>
     </div>
 
-    <!-- JavaScript to Toggle Sidebar -->
+    <!-- Auth Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold">Login to TM Nexus Hub</h3>
+                    <button onclick="closeModal('loginModal')" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="loginEmail" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="loginEmail" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="loginPassword" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="loginPassword" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="rememberMe" class="mr-2">
+                            <label for="rememberMe" class="text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" onclick="showForgotPassword()" class="text-blue-600 hover:underline">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700 transition">
+                        Login
+                    </button>
+                    
+                    <p class="text-center text-gray-600">
+                        Don't have an account? 
+                        <a href="#" onclick="toggleAuthModal()" class="text-blue-600 hover:underline">Sign up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold">Create an Account</h3>
+                    <button onclick="closeModal('signupModal')" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="signupForm" class="space-y-4">
+                    <div>
+                        <label for="signupName" class="block text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="signupName" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="signupEmail" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="signupEmail" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="signupPassword" class="block text-gray-700 mb-2">Password (min 6 characters)</label>
+                        <input type="password" id="signupPassword" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700 transition">
+                        Sign Up
+                    </button>
+                    
+                    <p class="text-center text-gray-600">
+                        Already have an account? 
+                        <a href="#" onclick="toggleAuthModal()" class="text-blue-600 hover:underline">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold">Reset Password</h3>
+                    <button onclick="closeModal('forgotModal')" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="forgotForm" class="space-y-4">
+                    <div>
+                        <label for="forgotEmail" class="block text-gray-700 mb-2">Enter your email</label>
+                        <input type="email" id="forgotEmail" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700 transition">
+                        Send Reset Link
+                    </button>
+                    
+                    <p class="text-center text-gray-600">
+                        <a href="#" onclick="toggleAuthModal()" class="text-blue-600 hover:underline">Back to Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById("mySidebar");
-            if (sidebar.style.display === "block") {
-                sidebar.style.display = "none";
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBHfb8avu4Z-NCrqhZj7GXhIoN9JVrenl8",
+            authDomain: "ciphervenom-26-06-2024.firebaseapp.com",
+            projectId: "ciphervenom-26-06-2024",
+            storageBucket: "ciphervenom-26-06-2024.appspot.com",
+            messagingSenderId: "244596885169",
+            appId: "1:244596885169:web:55f59a7c1389e860584490"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        
+        // Track dropdown state
+        let dropdownOpen = false;
+        
+        // Toggle dropdown function
+        function toggleDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdownOpen = !dropdownOpen;
+            if (dropdownOpen) {
+                dropdown.classList.remove('hidden');
+                // Close dropdown when clicking outside
+                document.addEventListener('click', closeDropdownOutside);
             } else {
-                sidebar.style.display = "block";
+                dropdown.classList.add('hidden');
+                document.removeEventListener('click', closeDropdownOutside);
             }
         }
-
-        // Close sidebar when clicking outside
-        window.onclick = function (event) {
-            if (!event.target.matches('.menu-icon') && !event.target.matches('.close-btn')) {
-                const sidebar = document.getElementById("mySidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
+        
+        // Close dropdown when clicking outside
+        function closeDropdownOutside(event) {
+            const dropdown = document.getElementById('userDropdown');
+            const button = document.getElementById('userDropdownButton');
+            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdownOpen = false;
+                dropdown.classList.add('hidden');
+                document.removeEventListener('click', closeDropdownOutside);
+            }
+        }
+        
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Chatbot Toggle
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbotContainer');
+            chatbot.classList.toggle('hidden');
+        }
+        
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function toggleAuthModal() {
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            
+            if (!loginModal.classList.contains('hidden')) {
+                closeModal('loginModal');
+                openModal('signupModal');
+            } else {
+                closeModal('signupModal');
+                openModal('loginModal');
+            }
+        }
+        
+        function showForgotPassword() {
+            closeModal('loginModal');
+            openModal('forgotModal');
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('fixed') && event.target.classList.contains('inset-0')) {
+                const modals = document.querySelectorAll('.fixed.inset-0');
+                modals.forEach(modal => {
+                    if (!modal.classList.contains('hidden')) {
+                        closeModal(modal.id);
+                    }
+                });
+            }
+        }
+        
+        // Auth State Listener
+        auth.onAuthStateChanged((user) => {
+            const authButtons = document.getElementById('authButtons');
+            
+            if (user) {
+                // User is signed in
+                const displayName = user.displayName || user.email.split('@')[0];
+                authButtons.innerHTML = `
+                    <div class="relative">
+                        <button id="userDropdownButton" onclick="toggleDropdown()" class="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 transition">
+                            <i class="fas fa-user-circle"></i>
+                            <span>${displayName}</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="userDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+                            <a href="#" onclick="logout()" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Logout</a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // User is signed out - only show buttons on desktop
+                if (window.innerWidth >= 768) { // md breakpoint
+                    authButtons.innerHTML = `
+                        <button onclick="openModal('loginModal')" class="px-4 py-2 border border-gray-700 text-gray-700 rounded hover:bg-gray-100 transition">Login</button>
+                        <button onclick="openModal('signupModal')" class="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition">Sign Up</button>
+                    `;
+                } else {
+                    authButtons.innerHTML = ''; // Empty on mobile
                 }
             }
-        };
-
-        // Toggle Chatbot
-        function toggleChatbot() {
-            const chatbotContainer = document.getElementById("chatbot-container");
-            chatbotContainer.style.display = chatbotContainer.style.display === "block" ? "none" : "block";
+        });
+        
+        // Handle window resize to show/hide auth buttons appropriately
+        window.addEventListener('resize', () => {
+            if (auth.currentUser === null) { // Only if user is not logged in
+                const authButtons = document.getElementById('authButtons');
+                if (window.innerWidth >= 768) { // md breakpoint
+                    authButtons.innerHTML = `
+                        <button onclick="openModal('loginModal')" class="px-4 py-2 border border-gray-700 text-gray-700 rounded hover:bg-gray-100 transition">Login</button>
+                        <button onclick="openModal('signupModal')" class="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700 transition">Sign Up</button>
+                    `;
+                } else {
+                    authButtons.innerHTML = ''; // Empty on mobile
+                }
+            }
+        });
+        
+        // Login Function
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    closeModal('loginModal');
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+        
+        // Signup Function
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    return userCredential.user.updateProfile({
+                        displayName: name
+                    });
+                })
+                .then(() => {
+                    closeModal('signupModal');
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+        
+        // Forgot Password Function
+        document.getElementById('forgotForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('forgotEmail').value;
+            
+            auth.sendPasswordResetEmail(email)
+                .then(() => {
+                    alert('Password reset email sent!');
+                    closeModal('forgotModal');
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+        
+        // Logout Function
+        function logout() {
+            auth.signOut()
+                .then(() => {
+                    // Close dropdown if open
+                    dropdownOpen = false;
+                    document.getElementById('userDropdown').classList.add('hidden');
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
         }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
     </script>
-
 </body>
-
 </html>
